@@ -48,7 +48,7 @@ ifeq "$(strip $(VERSION))" ""
  override VERSION = $(shell git describe --always --tags --dirty)
 endif
 
-## Variable assertions
+## Variable assertions #################################
 
 ifndef TEMP_DIR
 	$(error TEMP_DIR is not set)
