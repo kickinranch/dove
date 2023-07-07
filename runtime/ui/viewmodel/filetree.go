@@ -6,12 +6,11 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/kickinranch/dove/dove/filetree"
+	"github.com/kickinranch/dove/runtime/ui/format"
 	"github.com/lunixbochs/vtclean"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-
-	"github.com/kickinranch/dove/dove/filetree"
-	"github.com/kickinranch/dove/runtime/ui/format"
 )
 
 // FileTreeViewModel holds the UI objects and data models for populating the right pane. Specifically the pane that

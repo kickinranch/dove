@@ -5,10 +5,9 @@ import (
 	"strconv"
 
 	"github.com/dustin/go-humanize"
+	"github.com/kickinranch/dove/dove/image"
 	"github.com/logrusorgru/aurora"
 	"github.com/spf13/viper"
-
-	"github.com/kickinranch/dove/dove/image"
 )
 
 const (

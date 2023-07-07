@@ -3,9 +3,8 @@ package export
 import (
 	"testing"
 
-	"github.com/sergi/go-diff/diffmatchpatch"
-
 	"github.com/kickinranch/dove/dove/image/docker"
+	"github.com/sergi/go-diff/diffmatchpatch"
 )
 
 func Test_Export(t *testing.T) {

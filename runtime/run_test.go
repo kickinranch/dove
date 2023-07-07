@@ -5,13 +5,12 @@ import (
 	"os"
 	"testing"
 
-	"github.com/lunixbochs/vtclean"
-	"github.com/spf13/afero"
-	"github.com/spf13/viper"
-
 	"github.com/kickinranch/dove/dove"
 	"github.com/kickinranch/dove/dove/image"
 	"github.com/kickinranch/dove/dove/image/docker"
+	"github.com/lunixbochs/vtclean"
+	"github.com/spf13/afero"
+	"github.com/spf13/viper"
 )
 
 type defaultResolver struct{}

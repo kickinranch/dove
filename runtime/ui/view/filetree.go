@@ -5,14 +5,13 @@ import (
 	"regexp"
 
 	"github.com/awesome-gocui/gocui"
-	"github.com/sirupsen/logrus"
-	"github.com/spf13/viper"
-
 	"github.com/kickinranch/dove/dove/filetree"
 	"github.com/kickinranch/dove/runtime/ui/format"
 	"github.com/kickinranch/dove/runtime/ui/key"
 	"github.com/kickinranch/dove/runtime/ui/viewmodel"
 	"github.com/kickinranch/dove/utils"
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 )
 
 type ViewOptionChangeListener func() error

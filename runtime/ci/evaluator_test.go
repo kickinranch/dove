@@ -4,9 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/spf13/viper"
-
 	"github.com/kickinranch/dove/dove/image/docker"
+	"github.com/spf13/viper"
 )
 
 func Test_Evaluator(t *testing.T) {

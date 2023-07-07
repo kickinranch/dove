@@ -5,11 +5,10 @@ import (
 	"strings"
 
 	"github.com/awesome-gocui/gocui"
-	"github.com/sirupsen/logrus"
-
 	"github.com/kickinranch/dove/runtime/ui/format"
 	"github.com/kickinranch/dove/runtime/ui/key"
 	"github.com/kickinranch/dove/utils"
+	"github.com/sirupsen/logrus"
 )
 
 // Status holds the UI objects and data models for populating the bottom-most pane. Specifically the panel

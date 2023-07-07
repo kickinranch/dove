@@ -5,10 +5,9 @@ import (
 
 	"github.com/awesome-gocui/gocui"
 	"github.com/awesome-gocui/keybinding"
+	"github.com/kickinranch/dove/runtime/ui/format"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-
-	"github.com/kickinranch/dove/runtime/ui/format"
 )
 
 type BindingInfo struct {

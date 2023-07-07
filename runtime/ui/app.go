@@ -4,13 +4,12 @@ import (
 	"sync"
 
 	"github.com/awesome-gocui/gocui"
-	"github.com/sirupsen/logrus"
-
 	"github.com/kickinranch/dove/dove/filetree"
 	"github.com/kickinranch/dove/dove/image"
 	"github.com/kickinranch/dove/runtime/ui/key"
 	"github.com/kickinranch/dove/runtime/ui/layout"
 	"github.com/kickinranch/dove/runtime/ui/layout/compound"
+	"github.com/sirupsen/logrus"
 )
 
 const debug = false

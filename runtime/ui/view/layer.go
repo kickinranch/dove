@@ -4,13 +4,12 @@ import (
 	"fmt"
 
 	"github.com/awesome-gocui/gocui"
-	"github.com/sirupsen/logrus"
-	"github.com/spf13/viper"
-
 	"github.com/kickinranch/dove/dove/image"
 	"github.com/kickinranch/dove/runtime/ui/format"
 	"github.com/kickinranch/dove/runtime/ui/key"
 	"github.com/kickinranch/dove/runtime/ui/viewmodel"
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 )
 
 // Layer holds the UI objects and data models for populating the lower-left pane.

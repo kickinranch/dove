@@ -8,11 +8,10 @@ import (
 	"testing"
 
 	"github.com/fatih/color"
-	"github.com/sergi/go-diff/diffmatchpatch"
-
 	"github.com/kickinranch/dove/dove/filetree"
 	"github.com/kickinranch/dove/dove/image/docker"
 	"github.com/kickinranch/dove/runtime/ui/format"
+	"github.com/sergi/go-diff/diffmatchpatch"
 )
 
 const allowTestDataCapture = false

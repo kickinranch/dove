@@ -2,10 +2,9 @@ package compound
 
 import (
 	"github.com/awesome-gocui/gocui"
-	"github.com/sirupsen/logrus"
-
 	"github.com/kickinranch/dove/runtime/ui/view"
 	"github.com/kickinranch/dove/utils"
+	"github.com/sirupsen/logrus"
 )
 
 type LayerDetailsCompoundLayout struct {

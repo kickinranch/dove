@@ -1,9 +1,8 @@
 package runtime
 
 import (
-	"github.com/spf13/viper"
-
 	"github.com/kickinranch/dove/dove"
+	"github.com/spf13/viper"
 )
 
 type Options struct {

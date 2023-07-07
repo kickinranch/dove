@@ -4,12 +4,11 @@ import (
 	"regexp"
 
 	"github.com/awesome-gocui/gocui"
-	"github.com/sirupsen/logrus"
-
 	"github.com/kickinranch/dove/dove/filetree"
 	"github.com/kickinranch/dove/dove/image"
 	"github.com/kickinranch/dove/runtime/ui/view"
 	"github.com/kickinranch/dove/runtime/ui/viewmodel"
+	"github.com/sirupsen/logrus"
 )
 
 type Controller struct {

@@ -9,9 +9,8 @@ import (
 
 	"github.com/docker/cli/cli/connhelper"
 	"github.com/docker/docker/client"
-	"golang.org/x/net/context"
-
 	"github.com/kickinranch/dove/dove/image"
+	"golang.org/x/net/context"
 )
 
 type engineResolver struct{}

@@ -7,11 +7,10 @@ import (
 
 	"github.com/awesome-gocui/gocui"
 	"github.com/dustin/go-humanize"
-	"github.com/sirupsen/logrus"
-
 	"github.com/kickinranch/dove/dove/filetree"
 	"github.com/kickinranch/dove/runtime/ui/format"
 	"github.com/kickinranch/dove/runtime/ui/key"
+	"github.com/sirupsen/logrus"
 )
 
 type ImageDetails struct {

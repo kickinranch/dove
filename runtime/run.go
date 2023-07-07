@@ -6,9 +6,6 @@ import (
 	"time"
 
 	"github.com/dustin/go-humanize"
-	"github.com/sirupsen/logrus"
-	"github.com/spf13/afero"
-
 	"github.com/kickinranch/dove/dove"
 	"github.com/kickinranch/dove/dove/filetree"
 	"github.com/kickinranch/dove/dove/image"
@@ -16,6 +13,8 @@ import (
 	"github.com/kickinranch/dove/runtime/export"
 	"github.com/kickinranch/dove/runtime/ui"
 	"github.com/kickinranch/dove/utils"
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/afero"
 )
 
 func run(enableUi bool, options Options, imageResolver image.Resolver, events eventChannel, filesystem afero.Fs) {

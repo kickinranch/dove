@@ -4,12 +4,11 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/kickinranch/dove/dove"
+	"github.com/kickinranch/dove/runtime"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-
-	"github.com/kickinranch/dove/dove"
-	"github.com/kickinranch/dove/runtime"
 )
 
 // doAnalyzeCmd takes a docker image tag, digest, or id and displays the

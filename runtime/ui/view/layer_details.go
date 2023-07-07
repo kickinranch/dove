@@ -5,11 +5,10 @@ import (
 	"strings"
 
 	"github.com/awesome-gocui/gocui"
-	"github.com/sirupsen/logrus"
-
 	"github.com/kickinranch/dove/dove/image"
 	"github.com/kickinranch/dove/runtime/ui/format"
 	"github.com/kickinranch/dove/runtime/ui/key"
+	"github.com/sirupsen/logrus"
 )
 
 type LayerDetails struct {

@@ -2,7 +2,6 @@ package view
 
 import (
 	"github.com/awesome-gocui/gocui"
-
 	"github.com/kickinranch/dove/dove/filetree"
 	"github.com/kickinranch/dove/dove/image"
 )
