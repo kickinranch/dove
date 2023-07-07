@@ -23,6 +23,7 @@ brews:
   - repository:
       owner: kickinranch
       name: homebrew-dove
+      token: "{{.Env.TAP_GITHUB_TOKEN}}"
     homepage: "https://github.com/kickinranch/dove/"
     description: "A tool for exploring layers in a docker image"
 
