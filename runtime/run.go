@@ -9,13 +9,13 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/afero"
 
-	"github.com/wagoodman/dive/dive"
-	"github.com/wagoodman/dive/dive/filetree"
-	"github.com/wagoodman/dive/dive/image"
-	"github.com/wagoodman/dive/runtime/ci"
-	"github.com/wagoodman/dive/runtime/export"
-	"github.com/wagoodman/dive/runtime/ui"
-	"github.com/wagoodman/dive/utils"
+	"github.com/kickinranch/dove/dove"
+	"github.com/kickinranch/dove/dove/filetree"
+	"github.com/kickinranch/dove/dove/image"
+	"github.com/kickinranch/dove/runtime/ci"
+	"github.com/kickinranch/dove/runtime/export"
+	"github.com/kickinranch/dove/runtime/ui"
+	"github.com/kickinranch/dove/utils"
 )
 
 func run(enableUi bool, options Options, imageResolver image.Resolver, events eventChannel, filesystem afero.Fs) {
@@ -121,7 +121,7 @@ func Run(options Options) {
 	var exitCode int
 	var events = make(eventChannel)
 
-	imageResolver, err := dive.GetImageResolver(options.Source)
+	imageResolver, err := dove.GetImageResolver(options.Source)
 	if err != nil {
 		message := "cannot determine image provider"
 		logrus.Error(message)

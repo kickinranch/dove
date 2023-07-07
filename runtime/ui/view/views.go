@@ -3,8 +3,8 @@ package view
 import (
 	"github.com/awesome-gocui/gocui"
 
-	"github.com/wagoodman/dive/dive/filetree"
-	"github.com/wagoodman/dive/dive/image"
+	"github.com/kickinranch/dove/dove/filetree"
+	"github.com/kickinranch/dove/dove/image"
 )
 
 type IView interface {

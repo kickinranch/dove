@@ -8,8 +8,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/wagoodman/dive/dive"
-	"github.com/wagoodman/dive/runtime"
+	"github.com/kickinranch/dove/dove"
+	"github.com/kickinranch/dove/runtime"
 )
 
 // doAnalyzeCmd takes a docker image tag, digest, or id and displays the
@@ -41,15 +41,15 @@ func doAnalyzeCmd(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
-	var sourceType dive.ImageSource
+	var sourceType dove.ImageSource
 	var imageStr string
 
-	sourceType, imageStr = dive.DeriveImageSource(userImage)
+	sourceType, imageStr = dove.DeriveImageSource(userImage)
 
-	if sourceType == dive.SourceUnknown {
+	if sourceType == dove.SourceUnknown {
 		sourceStr := viper.GetString("source")
-		sourceType = dive.ParseImageSource(sourceStr)
-		if sourceType == dive.SourceUnknown {
+		sourceType = dove.ParseImageSource(sourceStr)
+		if sourceType == dove.SourceUnknown {
 			fmt.Printf("unable to determine image source: %v\n", sourceStr)
 			os.Exit(1)
 		}

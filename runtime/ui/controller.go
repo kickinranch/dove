@@ -6,10 +6,10 @@ import (
 	"github.com/awesome-gocui/gocui"
 	"github.com/sirupsen/logrus"
 
-	"github.com/wagoodman/dive/dive/filetree"
-	"github.com/wagoodman/dive/dive/image"
-	"github.com/wagoodman/dive/runtime/ui/view"
-	"github.com/wagoodman/dive/runtime/ui/viewmodel"
+	"github.com/kickinranch/dove/dove/filetree"
+	"github.com/kickinranch/dove/dove/image"
+	"github.com/kickinranch/dove/runtime/ui/view"
+	"github.com/kickinranch/dove/runtime/ui/viewmodel"
 )
 
 type Controller struct {

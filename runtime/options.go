@@ -3,13 +3,13 @@ package runtime
 import (
 	"github.com/spf13/viper"
 
-	"github.com/wagoodman/dive/dive"
+	"github.com/kickinranch/dove/dove"
 )
 
 type Options struct {
 	Ci           bool
 	Image        string
-	Source       dive.ImageSource
+	Source       dove.ImageSource
 	IgnoreErrors bool
 	ExportFile   string
 	CiConfig     *viper.Viper

@@ -8,7 +8,7 @@ import (
 	"github.com/logrusorgru/aurora"
 	"github.com/spf13/viper"
 
-	"github.com/wagoodman/dive/dive/image"
+	"github.com/kickinranch/dove/dove/image"
 )
 
 const (

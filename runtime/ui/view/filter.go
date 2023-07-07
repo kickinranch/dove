@@ -7,8 +7,8 @@ import (
 	"github.com/awesome-gocui/gocui"
 	"github.com/sirupsen/logrus"
 
-	"github.com/wagoodman/dive/runtime/ui/format"
-	"github.com/wagoodman/dive/utils"
+	"github.com/kickinranch/dove/runtime/ui/format"
+	"github.com/kickinranch/dove/utils"
 )
 
 type FilterEditListener func(string) error
@@ -91,7 +91,7 @@ func (v *Filter) ToggleVisible() error {
 
 	// reset the cursor for the next time it is visible
 	// Note: there is a subtle gocui behavior here where this cannot be called when the view
-	// is newly visible. Is this a problem with dive or gocui?
+	// is newly visible. Is this a problem with dove or gocui?
 	return v.view.SetCursor(0, 0)
 }
 

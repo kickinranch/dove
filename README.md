@@ -1,8 +1,8 @@
-# dive
-[![GitHub release](https://img.shields.io/github/release/wagoodman/dive.svg)](https://github.com/wagoodman/dive/releases/latest)
-[![Validations](https://github.com/wagoodman/dive/actions/workflows/validations.yaml/badge.svg)](https://github.com/wagoodman/dive/actions/workflows/validations.yaml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/wagoodman/dive)](https://goreportcard.com/report/github.com/wagoodman/dive)
-[![License: MIT](https://img.shields.io/badge/License-MIT%202.0-blue.svg)](https://github.com/wagoodman/dive/blob/main/LICENSE)
+# dove
+[![GitHub release](https://img.shields.io/github/release/kickinranch/dove.svg)](https://github.com/kickinranch/dove/releases/latest)
+[![Validations](https://github.com/kickinranch/dove/actions/workflows/validations.yaml/badge.svg)](https://github.com/kickinranch/dove/actions/workflows/validations.yaml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kickinranch/dove)](https://goreportcard.com/report/github.com/kickinranch/dove)
+[![License: MIT](https://img.shields.io/badge/License-MIT%202.0-blue.svg)](https://github.com/kickinranch/dove/blob/main/LICENSE)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat)](https://www.paypal.me/wagoodman)
 
 **A tool for exploring a docker image, layer contents, and discovering ways to shrink the size of your Docker/OCI image.**
@@ -10,23 +10,23 @@
 
 ![Image](.data/demo.gif)
 
-To analyze a Docker image simply run dive with an image tag/id/digest:
+To analyze a Docker image simply run dove with an image tag/id/digest:
 ```bash
-dive <your-image-tag>
+dove <your-image-tag>
 ```
 
-or you can dive with docker command directly
+or you can dove with docker command directly
 ```
-alias dive="docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive"
-dive <your-image-tag>
+alias dove="docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock kickinranch/dove"
+dove <your-image-tag>
 
 # for example
-dive nginx:latest
+dove nginx:latest
 ```
 
 or if you want to build your image then jump straight into analyzing it:
 ```bash
-dive build -t <some-tag> .
+dove build -t <some-tag> .
 ```
 
 Building on Macbook (supporting only the Docker container engine)
@@ -36,13 +36,13 @@ docker run --rm -it \
       -v /var/run/docker.sock:/var/run/docker.sock \
       -v  "$(pwd)":"$(pwd)" \
       -w "$(pwd)" \
-      -v "$HOME/.dive.yaml":"$HOME/.dive.yaml" \
-      wagoodman/dive:latest build -t <some-tag> .
+      -v "$HOME/.dove.yaml":"$HOME/.dove.yaml" \
+      kickinranch/dove:latest build -t <some-tag> .
 ```
 
 Additionally you can run this in your CI pipeline to ensure you're keeping wasted space to a minimum (this skips the UI):
 ```
-CI=true dive <your-image>
+CI=true dove <your-image>
 ```
 
 ![Image](.data/demo-ci.png)
@@ -66,24 +66,24 @@ The lower left pane shows basic layer info and an experimental metric that will 
 **Quick build/analysis cycles**
 
 You can build a Docker image and do an immediate analysis with one command:
-`dive build -t some-tag .`
+`dove build -t some-tag .`
 
-You only need to replace your `docker build` command with the same `dive build`
+You only need to replace your `docker build` command with the same `dove build`
 command.
 
 **CI Integration**
 
-Analyze an image and get a pass/fail result based on the image efficiency and wasted space. Simply set `CI=true` in the environment when invoking any valid dive command.
+Analyze an image and get a pass/fail result based on the image efficiency and wasted space. Simply set `CI=true` in the environment when invoking any valid dove command.
 
 **Multiple Image Sources and Container Engines Supported**
 
 With the `--source` option, you can select where to fetch the container image from:
 ```bash
-dive <your-image> --source <source>
+dove <your-image> --source <source>
 ```
 or
 ```bash
-dive <source>://<your-image>
+dove <source>://<your-image>
 ```
 
 With valid `source` options as such:
@@ -95,24 +95,24 @@ With valid `source` options as such:
 
 **Ubuntu/Debian**
 ```bash
-export DIVE_VERSION=$(curl -sL "https://api.github.com/repos/wagoodman/dive/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
-curl -OL https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb
-sudo apt install ./dive_${DIVE_VERSION}_linux_amd64.deb
+export dove_VERSION=$(curl -sL "https://api.github.com/repos/kickinranch/dove/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+curl -OL https://github.com/kickinranch/dove/releases/download/v${dove_VERSION}/dove_${dove_VERSION}_linux_amd64.deb
+sudo apt install ./dove_${dove_VERSION}_linux_amd64.deb
 ```
 
 **RHEL/Centos**
 ```bash
-export DIVE_VERSION=$(curl -sL "https://api.github.com/repos/wagoodman/dive/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
-curl -OL https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.rpm
-rpm -i dive_0.9.2_linux_amd64.rpm
+export dove_VERSION=$(curl -sL "https://api.github.com/repos/kickinranch/dove/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+curl -OL https://github.com/kickinranch/dove/releases/download/v${dove_VERSION}/dove_${dove_VERSION}_linux_amd64.rpm
+rpm -i dove_0.9.2_linux_amd64.rpm
 ```
 
 **Arch Linux**
 
-Available in the [extra repository](https://archlinux.org/packages/extra/x86_64/dive/) and can be installed via [pacman](https://wiki.archlinux.org/title/Pacman):
+Available in the [extra repository](https://archlinux.org/packages/extra/x86_64/dove/) and can be installed via [pacman](https://wiki.archlinux.org/title/Pacman):
 
 ```bash
-pacman -S dive
+pacman -S dove
 ```
 
 **Mac**
@@ -120,80 +120,80 @@ pacman -S dive
 If you use [Homebrew](https://brew.sh):
 
 ```bash
-brew install dive
+brew install dove
 ```
 
 If you use [MacPorts](https://www.macports.org):
 
 ```bash
-sudo port install dive
+sudo port install dove
 ```
 
-Or download the latest Darwin build from the [releases page](https://github.com/wagoodman/dive/releases/latest).
+Or download the latest Darwin build from the [releases page](https://github.com/kickinranch/dove/releases/latest).
 
 **Windows**
 
-Download the [latest release](https://github.com/wagoodman/dive/releases/latest).
+Download the [latest release](https://github.com/kickinranch/dove/releases/latest).
 
 **Go tools**
 Requires Go version 1.10 or higher.
 
 ```bash
-go get github.com/wagoodman/dive
+go get github.com/kickinranch/dove
 ```
-*Note*: installing in this way you will not see a proper version when running `dive -v`.
+*Note*: installing in this way you will not see a proper version when running `dove -v`.
 
 **Nix/NixOS**
 
 On NixOS:
 ```bash
-nix-env -iA nixos.dive
+nix-env -iA nixos.dove
 ```
 On non-NixOS (Linux, Mac)
 ```bash
-nix-env -iA nixpkgs.dive
+nix-env -iA nixpkgs.dove
 ```
 
 **Docker**
 ```bash
-docker pull wagoodman/dive
+docker pull kickinranch/dove
 ```
 
 or
 
 ```bash
-docker pull quay.io/wagoodman/dive
+docker pull quay.io/kickinranch/dove
 ```
 
 When running you'll need to include the docker socket file:
 ```bash
 docker run --rm -it \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    wagoodman/dive:latest <dive arguments...>
+    kickinranch/dove:latest <dove arguments...>
 ```
 
 Docker for Windows (showing PowerShell compatible line breaks; collapse to a single line for Command Prompt compatibility)
 ```bash
 docker run --rm -it `
     -v /var/run/docker.sock:/var/run/docker.sock `
-    wagoodman/dive:latest <dive arguments...>
+    kickinranch/dove:latest <dove arguments...>
 ```
 
 **Note:** depending on the version of docker you are running locally you may need to specify the docker API version as an environment variable:
 ```bash
-   DOCKER_API_VERSION=1.37 dive ...
+   DOCKER_API_VERSION=1.37 dove ...
 ```
 or if you are running with a docker image:
 ```bash
 docker run --rm -it \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -e DOCKER_API_VERSION=1.37 \
-    wagoodman/dive:latest <dive arguments...>
+    kickinranch/dove:latest <dove arguments...>
 ```
 
 ## CI Integration
 
-When running dive with the environment variable `CI=true` then the dive UI will be bypassed and will instead analyze your docker image, giving it a pass/fail indication via return code. Currently there are three metrics supported via a `.dive-ci` file that you can put at the root of your repo:
+When running dove with the environment variable `CI=true` then the dove UI will be bypassed and will instead analyze your docker image, giving it a pass/fail indication via return code. Currently there are three metrics supported via a `.dove-ci` file that you can put at the root of your repo:
 ```
 rules:
   # If the efficiency is measured below X%, mark as failed.
@@ -242,7 +242,7 @@ container-engine: docker
 ignore-errors: false
 log:
   enabled: true
-  path: ./dive.log
+  path: ./dove.log
   level: info
 
 # Note: you can specify multiple bindings by separating values with a comma.
@@ -292,10 +292,10 @@ layer:
 
 ```
 
-dive will search for configs in the following locations:
-- `$XDG_CONFIG_HOME/dive/*.yaml`
-- `$XDG_CONFIG_DIRS/dive/*.yaml`
-- `~/.config/dive/*.yaml`
-- `~/.dive.yaml`
+dove will search for configs in the following locations:
+- `$XDG_CONFIG_HOME/dove/*.yaml`
+- `$XDG_CONFIG_DIRS/dove/*.yaml`
+- `~/.config/dove/*.yaml`
+- `~/.dove.yaml`
 
 `.yml` can be used instead of `.yaml` if desired.

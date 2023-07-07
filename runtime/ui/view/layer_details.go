@@ -7,9 +7,9 @@ import (
 	"github.com/awesome-gocui/gocui"
 	"github.com/sirupsen/logrus"
 
-	"github.com/wagoodman/dive/dive/image"
-	"github.com/wagoodman/dive/runtime/ui/format"
-	"github.com/wagoodman/dive/runtime/ui/key"
+	"github.com/kickinranch/dove/dove/image"
+	"github.com/kickinranch/dove/runtime/ui/format"
+	"github.com/kickinranch/dove/runtime/ui/key"
 )
 
 type LayerDetails struct {

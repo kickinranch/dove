@@ -1,13 +1,13 @@
-package dive
+package dove
 
 import (
 	"fmt"
 	"net/url"
 	"strings"
 
-	"github.com/wagoodman/dive/dive/image"
-	"github.com/wagoodman/dive/dive/image/docker"
-	"github.com/wagoodman/dive/dive/image/podman"
+	"github.com/kickinranch/dove/dove/image"
+	"github.com/kickinranch/dove/dove/image/docker"
+	"github.com/kickinranch/dove/dove/image/podman"
 )
 
 const (

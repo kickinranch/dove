@@ -12,8 +12,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/wagoodman/dive/dive"
-	"github.com/wagoodman/dive/dive/filetree"
+	"github.com/kickinranch/dove/dove"
+	"github.com/kickinranch/dove/dove/filetree"
 )
 
 var cfgFile string
@@ -24,7 +24,7 @@ var isCi bool
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "dive [IMAGE]",
+	Use:   "dove [IMAGE]",
 	Short: "Docker Image Visualizer & Explorer",
 	Long: `This tool provides a way to discover and explore the contents of a docker image. Additionally the tool estimates
 the amount of wasted space and identifies the offending files from the image.`,
@@ -46,13 +46,13 @@ func init() {
 }
 
 func initCli() {
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.dive.yaml, ~/.config/dive/*.yaml, or $XDG_CONFIG_HOME/dive.yaml)")
-	rootCmd.PersistentFlags().String("source", "docker", "The container engine to fetch the image from. Allowed values: "+strings.Join(dive.ImageSources, ", "))
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.dove.yaml, ~/.config/dove/*.yaml, or $XDG_CONFIG_HOME/dove.yaml)")
+	rootCmd.PersistentFlags().String("source", "docker", "The container engine to fetch the image from. Allowed values: "+strings.Join(dove.ImageSources, ", "))
 	rootCmd.PersistentFlags().BoolP("version", "v", false, "display version number")
 	rootCmd.PersistentFlags().BoolP("ignore-errors", "i", false, "ignore image parsing errors and run the analysis anyway")
 	rootCmd.Flags().BoolVar(&isCi, "ci", false, "Skip the interactive TUI and validate against CI rules (same as env var CI=true)")
 	rootCmd.Flags().StringVarP(&exportFile, "json", "j", "", "Skip the interactive TUI and write the layer analysis statistics to a given file.")
-	rootCmd.Flags().StringVar(&ciConfigFile, "ci-config", ".dive-ci", "If CI=true in the environment, use the given yaml to drive validation rules.")
+	rootCmd.Flags().StringVar(&ciConfigFile, "ci-config", ".dove-ci", "If CI=true in the environment, use the given yaml to drive validation rules.")
 
 	rootCmd.Flags().String("lowestEfficiency", "0.9", "(only valid with --ci given) lowest allowable image efficiency (as a ratio between 0-1), otherwise CI validation will fail.")
 	rootCmd.Flags().String("highestWastedBytes", "disabled", "(only valid with --ci given) highest allowable bytes wasted, otherwise CI validation will fail.")
@@ -74,7 +74,7 @@ func initConfig() {
 	var err error
 
 	viper.SetDefault("log.level", log.InfoLevel.String())
-	viper.SetDefault("log.path", "./dive.log")
+	viper.SetDefault("log.path", "./dove.log")
 	viper.SetDefault("log.enabled", false)
 	// keybindings: status view / global
 	viper.SetDefault("keybinding.quit", "ctrl+c,q")
@@ -113,7 +113,7 @@ func initConfig() {
 		os.Exit(1)
 	}
 
-	viper.SetEnvPrefix("DIVE")
+	viper.SetEnvPrefix("dove")
 	// replace all - with _ when looking for matching environment variables
 	viper.SetEnvKeyReplacer(strings.NewReplacer("-", "_"))
 	viper.AutomaticEnv()
@@ -164,7 +164,7 @@ func initLogging() {
 	}
 
 	log.SetLevel(level)
-	log.Debug("Starting Dive...")
+	log.Debug("Starting dove...")
 	log.Debugf("config filepath: %s", viper.ConfigFileUsed())
 	for k, v := range viper.AllSettings() {
 		log.Debug("config value: ", k, " : ", v)
@@ -172,8 +172,8 @@ func initLogging() {
 }
 
 // getDefaultCfgFile checks for config file in paths from xdg specs
-// and in $HOME/.config/dive/ directory
-// defaults to $HOME/.dive.yaml
+// and in $HOME/.config/dove/ directory
+// defaults to $HOME/.dove.yaml
 func getDefaultCfgFile() string {
 	home, err := homedir.Dir()
 	if err != nil {
@@ -192,13 +192,13 @@ func getDefaultCfgFile() string {
 			return file
 		}
 	}
-	return path.Join(home, ".dive.yaml")
+	return path.Join(home, ".dove.yaml")
 }
 
-// findInPath returns first "*.yaml" file in path's subdirectory "dive"
+// findInPath returns first "*.yaml" file in path's subdirectory "dove"
 // if not found returns empty string
 func findInPath(pathTo string) string {
-	directory := path.Join(pathTo, "dive")
+	directory := path.Join(pathTo, "dove")
 	files, err := os.ReadDir(directory)
 	if err != nil {
 		return ""

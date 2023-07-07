@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/wagoodman/dive/dive/image"
+	"github.com/kickinranch/dove/dove/image"
 )
 
 func TestLoadArchive(tarPath string) (*ImageArchive, error) {

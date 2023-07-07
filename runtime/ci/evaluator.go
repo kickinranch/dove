@@ -10,8 +10,8 @@ import (
 	"github.com/logrusorgru/aurora"
 	"github.com/spf13/viper"
 
-	"github.com/wagoodman/dive/dive/image"
-	"github.com/wagoodman/dive/utils"
+	"github.com/kickinranch/dove/dove/image"
+	"github.com/kickinranch/dove/utils"
 )
 
 type CiEvaluator struct {

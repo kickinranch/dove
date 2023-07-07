@@ -1,7 +1,7 @@
 package viewmodel
 
 import (
-	"github.com/wagoodman/dive/dive/image"
+	"github.com/kickinranch/dove/dove/image"
 )
 
 type LayerSelection struct {

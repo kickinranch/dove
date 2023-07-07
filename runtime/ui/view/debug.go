@@ -6,8 +6,8 @@ import (
 	"github.com/awesome-gocui/gocui"
 	"github.com/sirupsen/logrus"
 
-	"github.com/wagoodman/dive/runtime/ui/format"
-	"github.com/wagoodman/dive/utils"
+	"github.com/kickinranch/dove/runtime/ui/format"
+	"github.com/kickinranch/dove/utils"
 )
 
 // Debug is just for me :)

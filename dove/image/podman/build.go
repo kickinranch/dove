@@ -8,7 +8,7 @@ import (
 )
 
 func buildImageFromCli(buildArgs []string) (string, error) {
-	iidfile, err := os.CreateTemp("/tmp", "dive.*.iid")
+	iidfile, err := os.CreateTemp("/tmp", "dove.*.iid")
 	if err != nil {
 		return "", err
 	}

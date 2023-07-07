@@ -1,4 +1,4 @@
-module github.com/wagoodman/dive
+module github.com/kickinranch/dove
 
 go 1.13
 

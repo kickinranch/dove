@@ -3,7 +3,7 @@ package export
 import (
 	"encoding/json"
 
-	diveImage "github.com/wagoodman/dive/dive/image"
+	doveImage "github.com/kickinranch/dove/dove/image"
 )
 
 type export struct {
@@ -11,7 +11,7 @@ type export struct {
 	Image image   `json:"image"`
 }
 
-func NewExport(analysis *diveImage.AnalysisResult) *export {
+func NewExport(analysis *doveImage.AnalysisResult) *export {
 	data := export{
 		Layer: make([]layer, len(analysis.Layers)),
 		Image: image{

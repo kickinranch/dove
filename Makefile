@@ -1,4 +1,4 @@
-BIN = dive
+BIN = dove
 TEMP_DIR = ./.tmp
 PWD := ${CURDIR}
 PRODUCTION_REGISTRY = docker.io
@@ -102,30 +102,30 @@ bootstrap: bootstrap-go bootstrap-tools ## Download and install all go dependenc
 ## Development targets ###################################
 
 #run: build
-#	$(BUILD_PATH) build -t dive-example:latest -f .data/Dockerfile.example .
+#	$(BUILD_PATH) build -t dove-example:latest -f .data/Dockerfile.example .
 #
 #run-large: build
 #	$(BUILD_PATH) amir20/clashleaders:latest
 #
 #run-podman: build
-#	podman build -t dive-example:latest -f .data/Dockerfile.example .
-#	$(BUILD_PATH) localhost/dive-example:latest --engine podman
+#	podman build -t dove-example:latest -f .data/Dockerfile.example .
+#	$(BUILD_PATH) localhost/dove-example:latest --engine podman
 #
 #run-podman-large: build
 #	$(BUILD_PATH) docker.io/amir20/clashleaders:latest --engine podman
 #
 #run-ci: build
-#	CI=true $(BUILD_PATH) dive-example:latest --ci-config .data/.dive-ci
+#	CI=true $(BUILD_PATH) dove-example:latest --ci-config .data/.dove-ci
 #
 #dev:
-#	docker run -ti --rm -v $(PWD):/app -w /app -v dive-pkg:/go/pkg/ golang:1.13 bash
+#	docker run -ti --rm -v $(PWD):/app -w /app -v dove-pkg:/go/pkg/ golang:1.13 bash
 #
 #build: gofmt
 #	go build -o $(BUILD_PATH)
 
 .PHONY: generate-test-data
 generate-test-data:
-	docker build -t dive-test:latest -f .data/Dockerfile.test-image . && docker image save -o .data/test-docker-image.tar dive-test:latest && echo 'Exported test data!'
+	docker build -t dove-test:latest -f .data/Dockerfile.test-image . && docker image save -o .data/test-docker-image.tar dove-test:latest && echo 'Exported test data!'
 
 
 ## Static analysis targets #################################
@@ -186,7 +186,7 @@ ci-test-docker-image:
 		--rm \
 		-t \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		'${PRODUCTION_REGISTRY}/wagoodman/dive:latest' \
+		'${PRODUCTION_REGISTRY}/kickinranch/dove:latest' \
 			'${TEST_IMAGE}' \
 			--ci
 
@@ -204,9 +204,9 @@ ci-test-deb-package-install:
 					tar -vxzf - docker/docker --strip-component=1 && \
 					mv docker /usr/local/bin/ &&\
 				docker version && \
-				apt install ./snapshot/dive_*_linux_amd64.deb -y && \
-				dive --version && \
-				dive '${TEST_IMAGE}' --ci \
+				apt install ./snapshot/dove_*_linux_amd64.deb -y && \
+				dove --version && \
+				dove '${TEST_IMAGE}' --ci \
 			"
 
 .PHONY: ci-test-deb-package-install
@@ -221,29 +221,29 @@ ci-test-rpm-package-install:
 					tar -vxzf - docker/docker --strip-component=1 && \
 					mv docker /usr/local/bin/ &&\
 				docker version && \
-				dnf install ./snapshot/dive_*_linux_amd64.rpm -y && \
-				dive --version && \
-				dive '${TEST_IMAGE}' --ci \
+				dnf install ./snapshot/dove_*_linux_amd64.rpm -y && \
+				dove --version && \
+				dove '${TEST_IMAGE}' --ci \
 			"
 
 .PHONY: ci-test-linux-run
 ci-test-linux-run:
 	ls -la $(SNAPSHOT_DIR)
-	ls -la $(SNAPSHOT_DIR)/dive_linux_amd64_v1
-	chmod 755 $(SNAPSHOT_DIR)/dive_linux_amd64_v1/dive && \
-	$(SNAPSHOT_DIR)/dive_linux_amd64_v1/dive '${TEST_IMAGE}'  --ci && \
-    $(SNAPSHOT_DIR)/dive_linux_amd64_v1/dive --source docker-archive .data/test-kaniko-image.tar  --ci --ci-config .data/.dive-ci
+	ls -la $(SNAPSHOT_DIR)/dove_linux_amd64_v1
+	chmod 755 $(SNAPSHOT_DIR)/dove_linux_amd64_v1/dove && \
+	$(SNAPSHOT_DIR)/dove_linux_amd64_v1/dove '${TEST_IMAGE}'  --ci && \
+    $(SNAPSHOT_DIR)/dove_linux_amd64_v1/dove --source docker-archive .data/test-kaniko-image.tar  --ci --ci-config .data/.dove-ci
 
 # we're not attempting to test docker, just our ability to run on these systems. This avoids setting up docker in CI.
 .PHONY: ci-test-mac-run
 ci-test-mac-run:
-	chmod 755 $(SNAPSHOT_DIR)/dive_darwin_amd64_v1/dive && \
-	$(SNAPSHOT_DIR)/dive_darwin_amd64_v1/dive --source docker-archive .data/test-docker-image.tar  --ci --ci-config .data/.dive-ci
+	chmod 755 $(SNAPSHOT_DIR)/dove_darwin_amd64_v1/dove && \
+	$(SNAPSHOT_DIR)/dove_darwin_amd64_v1/dove --source docker-archive .data/test-docker-image.tar  --ci --ci-config .data/.dove-ci
 
 # we're not attempting to test docker, just our ability to run on these systems. This avoids setting up docker in CI.
 .PHONY: ci-test-windows-run
 ci-test-windows-run:
-	dive.exe --source docker-archive .data/test-docker-image.tar  --ci --ci-config .data/.dive-ci
+	dove.exe --source docker-archive .data/test-docker-image.tar  --ci --ci-config .data/.dove-ci
 
 
 ## Build-related targets #################################
